@@ -2,7 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: body defaults */
+/* Smooth transition for theme changes */
+:root {
+  --transition-fast: 180ms;
+}
+
+/* src/index.css (or whichever file holds your Tailwind imports) */
+
+@keyframes pulse-gradient {
+  0% {
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-size: 400% 400%;
+    background-position: 100% 50%;
+  }
+  100% {
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+  }
+}
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+/* Add this to your CSS file (e.g., App.css) */
+@keyframes matrix-scroll {
+  0% {
+    background-position: 0 0; /* Start at the top */
+  }
+  100% {
+    background-position: 0 250px; /* Scroll down by the height of one tile (adjust 250px to your backgroundSize) */
+  }
+}
+
+/* Extend Tailwind's utilities to include the animation */
+@layer utilities {
+  .animate-bg-pulse {
+    animation: pulse-gradient 25s ease infinite; /* 25 seconds for a very slow, subtle movement */
+  }
+}
+
+
+html, body, #root {
+  height: 100%;
+}
 body {
-  @apply bg-gray-50 text-gray-900;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, #050505 0%, #0a0a1a 50%, #12122a 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  color: #fff;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Optional: improve font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Neon glow helper for any elements if needed */
+.neon {
+  filter: drop-shadow(0 0 8px rgba(99,102,241,0.35)) drop-shadow(0 0 16px rgba(99,102,241,0.2));
+}
+
+/* Make sure svg waves do not block clicks */
+#waves, #waves svg {
+  pointer-events: none;
+}
+
+/* small responsive tweaks */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
