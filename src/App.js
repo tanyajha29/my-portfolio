@@ -111,7 +111,7 @@ const projects = [
     tech: ["Python", "Gunicorn", "PostgreSQL", "Docker"],
     github: "https://github.com/tanyajha29/CryptX",
     demo: "#",
-    image: "/images/cryptx.jpeg",
+    image: "/images/cryptx.jpg",
   },
   
   {
@@ -134,7 +134,7 @@ const projects = [
     title: "TaskFlow",
     desc: "A clean and modern task‑management web app built with Node.js, Express, MongoDB, and EJS.",
     tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
-    github: "https://github.com/tanyajha29/Crypt",
+    github: "https://github.com/tanyajha29/TaskFlow",
     demo: "#",
     image: "/images/taskFlow.jpeg",
   },
