@@ -111,11 +111,11 @@ const projects = [
     tech: ["Python", "Gunicorn", "PostgreSQL", "Docker"],
     github: "https://github.com/tanyajha29/Crypt",
     demo: "#",
-    image: "/images/cryptx.jpeg",
+    image: "/images/cryptX.jpeg",
   },
   
   {
-    title: "Heart Disease Prediction",
+    title: "Heart Guard",
     desc: "ML model to predict heart disease risk from health data.",
     tech: ["Python", "Pandas", "SQLite"],
     github: "https://github.com/tanyajha29/Heart_disease_Predictor",
@@ -136,7 +136,7 @@ const projects = [
     tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
     github: "https://github.com/tanyajha29/Crypt",
     demo: "#",
-    image: "/images/cryptx.jpeg",
+    image: "/images/taskFlow.jpeg",
   },
 ];
 
