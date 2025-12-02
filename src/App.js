@@ -136,7 +136,7 @@ const projects = [
     tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
     github: "https://github.com/tanyajha29/TaskFlow",
     demo: "#",
-    image: "/images/taskFlow.jpeg",
+    image: "/images/taskFlow.png",
   },
 ];
 
