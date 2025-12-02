@@ -111,7 +111,7 @@ const projects = [
     tech: ["Python", "Gunicorn", "PostgreSQL", "Docker"],
     github: "https://github.com/tanyajha29/CryptX",
     demo: "#",
-    image: "/images/cryptx.jpg",
+    image: "/images/cryptX.png",
   },
   
   {
