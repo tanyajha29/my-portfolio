@@ -109,7 +109,7 @@ const projects = [
     title: "CryptX",
     desc: "A containerized, full-stack data platform for market or security intelligence, leveraging Docker forconsistent deployment and PostgreSQL for scalable data storage.",
     tech: ["Python", "Gunicorn", "PostgreSQL", "Docker"],
-    github: "https://github.com/tanyajha29/Crypt",
+    github: "https://github.com/tanyajha29/CryptX",
     demo: "#",
     image: "/images/cryptX.jpeg",
   },
