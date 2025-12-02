@@ -105,6 +105,14 @@ const projects = [
     demo: "#",
     image: "/images/college_companion.png",
   },
+  {
+    title: "CryptX",
+    desc: "A containerized, full-stack data platform for market or security intelligence, leveraging Docker forconsistent deployment and PostgreSQL for scalable data storage.",
+    tech: ["Python", "Gunicorn", "PostgreSQL", "Docker"],
+    github: "https://github.com/tanyajha29/Crypt",
+    demo: "#",
+    image: "/images/cryptx.jpeg",
+  },
   
   {
     title: "Heart Disease Prediction",
@@ -121,6 +129,14 @@ const projects = [
     github: "https://github.com/tanyajha29/credit_fraud_dbt",
     demo: "#",
     image: "/images/Credit_Fraud.png",
+  },
+   {
+    title: "TaskFlow",
+    desc: "A clean and modern task‑management web app built with Node.js, Express, MongoDB, and EJS.",
+    tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
+    github: "https://github.com/tanyajha29/Crypt",
+    demo: "#",
+    image: "/images/cryptx.jpeg",
   },
 ];
 
