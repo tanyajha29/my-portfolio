@@ -142,12 +142,20 @@ const projects = [
     image: "/images/Credit_Fraud.jpg",
   },
   {
-    title: "TaskFlow",
-    desc: "A clean and modern task-management web app built with Node.js, Express, MongoDB, and EJS.",
+    title: "MindBreak AI",
+    desc: "AI-driven productivity companion that helps break down tasks and keep focus.",
     tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
-    github: "https://github.com/tanyajha29/TaskFlow",
+    github: "https://github.com/tanyajha29/MindBreak-AI",
     demo: "#",
     image: "/images/mind_break.jpg",
+  },
+  {
+    title: "Drishti Scan",
+    desc: "Computer vision project for document scanning and enhancement.",
+    tech: ["Python", "Computer Vision", "Machine Learning"],
+    github: "https://github.com/tanyajha29/Drishti-Scan",
+    demo: "#",
+    image: "/images/Dristi_scan.jpg",
   },
 ];
 
@@ -509,7 +517,7 @@ const Contact = ({ github, linkedin }) => (
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10">
           <a
-            href="mailto:tanyajha@example.com"
+            href="mailto:jhatanya211@gmail.com"
             className="w-full sm:w-auto text-center px-7 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 font-semibold"
           >
             Email Me
