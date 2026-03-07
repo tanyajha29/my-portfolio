@@ -145,7 +145,7 @@ const projects = [
     title: "MindBreak AI",
     desc: "AI-driven productivity companion that helps break down tasks and keep focus.",
     tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
-    github: "https://github.com/tanyajha29/TaskFlow",
+    github: "https://github.com/tanyajha29/MindBreak-AI",
     demo: "#",
     image: "/images/mind_break.jpg",
   },
@@ -517,7 +517,7 @@ const Contact = ({ github, linkedin }) => (
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10">
           <a
-            href="mailto:tanyajha@example.com"
+            href="mailto:jhatanya211@gmail.com"
             className="w-full sm:w-auto text-center px-7 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 font-semibold"
           >
             Email Me
