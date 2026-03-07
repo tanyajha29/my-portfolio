@@ -342,16 +342,17 @@ const About = () => (
     <div className="max-w-4xl mx-auto px-6">
       <h2 className="text-4xl sm:text-5xl font-extrabold text-cyan-400 mb-6">About Me</h2>
       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
-        I am a passionate and driven Information Technology student currently pursuing my Bachelor of Engineering
-        at Vidyalankar Institute of Technology, having completed a Diploma from Government Polytechnic, Thane.
+        I'm an IT student who loves building secure, scalable, user-friendly products. My focus is full-stack web
+        development (MERN) backed by a strong foundation in cybersecurity and machine learning.
       </p>
       <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
-        I enjoy designing and developing <b>full-stack web applications</b>, experimenting with <b>machine learning</b>{" "}
-        models, and exploring the ever-evolving field of <b>cybersecurity</b>. With a strong curiosity for technology,
-        I continuously learn new tools, frameworks, and concepts to enhance my skills and stay ahead in the tech domain.
+        Hands-on training includes: Sumago Infotech (2023–2024) where I contributed to full-stack modules with secure
+        coding and performance tuning, and L&T Skill Trainers Academy (2024–2025) where I built and evaluated ML models
+        in collaborative projects.
       </p>
       <p className="text-lg font-medium text-purple-400 leading-relaxed">
-        I have also won a state-level technical paper presentation and keep learning new tools and technologies every day.
+        Education: B.E. in Information Technology (2024–2027) at Vidyalankar Institute of Technology, GPA 9.4; Diploma
+        in Computer Engineering (2021–2024) from Government Polytechnic, Thane, 88.93%.
       </p>
     </div>
   </section>
