@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Tanya Jha – Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1) The Header (The "Who")
+- **Tagline:** Creative Full-Stack Developer | Cybersecurity Enthusiast | UI/UX Designer.
+- **Intro:** I am a third-year B.E. student in Information Technology passionate about building secure, user-centric digital experiences.
 
-## Available Scripts
+## 2) Technical Stack (The "What")
+- **Frontend:** React, TypeScript, Framer Motion, Tailwind CSS.
+- **Backend:** Node.js, Express.js, PostgreSQL, MongoDB (MERN Stack).
+- **Security:** Vulnerability Assessment, DevSecOps, Burp Suite.
+- **Design:** Figma (Glassmorphism and dark-themed UI/UX).
 
-In the project directory, you can run:
+## 3) Featured Projects (The "Proof")
+- **MindBreak AI** — AI-assisted productivity companion with task breakdown logic and focus cues.  
+  Stack: React, Node.js, Express, MongoDB, EJS.
+- **Drishti Scan** — Document scanning and enhancement using computer vision and ML.  
+  GitHub: https://github.com/tanyajha29/Drishti-Scan
+- **CryptX Encryptor** — Containerized full-stack app for cipher simulation and security analysis.  
+  Stack: Python, PostgreSQL, Docker, Gunicorn.
+- **College Companion** — Role-based student portal with scheduling, tracking, and admin tools.  
+  Stack: MERN + MySQL.
 
-### `npm start`
+## 4) Experience & Education
+- **Education:** B.E. in Information Technology (Third Year), Vidyalankar Institute of Technology.
+- **Current Focus:** Executing a year-long roadmap to master advanced project building and cybersecurity tools for top-tier recruitment.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 5) Connect with Me
+- **LinkedIn:** https://linkedin.com/in/tanyajha18
+- **Email:** jhatanya211@gmail.com
