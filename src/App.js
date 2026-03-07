@@ -157,6 +157,14 @@ const projects = [
     demo: "#",
     image: "/images/Dristi_scan.jpg",
   },
+  {
+    title: "PhishSight AI",
+    desc: "Browser extension that flags suspicious pages using AI-driven phishing detection.",
+    tech: ["Chrome Extension", "JavaScript", "Machine Learning"],
+    github: "https://github.com/tanyajha29/PhishSight-AI",
+    demo: "#",
+    image: "/images/PhishSight-AI.jpg",
+  },
 ];
 
 /* ---------- Page Components ---------- */
