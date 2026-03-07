@@ -142,12 +142,20 @@ const projects = [
     image: "/images/Credit_Fraud.jpg",
   },
   {
-    title: "TaskFlow",
-    desc: "A clean and modern task-management web app built with Node.js, Express, MongoDB, and EJS.",
+    title: "MindBreak AI",
+    desc: "AI-driven productivity companion that helps break down tasks and keep focus.",
     tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
     github: "https://github.com/tanyajha29/TaskFlow",
     demo: "#",
     image: "/images/mind_break.jpg",
+  },
+  {
+    title: "Drishti Scan",
+    desc: "Computer vision project for document scanning and enhancement.",
+    tech: ["Python", "Computer Vision", "Machine Learning"],
+    github: "https://github.com/tanyajha29/Drishti-Scan",
+    demo: "#",
+    image: "/images/Dristi_scan.jpg",
   },
 ];
 
