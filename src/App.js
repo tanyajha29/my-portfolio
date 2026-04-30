@@ -1,16 +1,17 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Lottie from "lottie-react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import AnimatedBackground from "./components/animated_background";
+import chatbotAnimation from "./assets/chatbot.json";
 
 // --- Icon imports ---
 import {
   FaBrain,
   FaDatabase,
   FaLaptopCode,
+  FaShieldAlt,
   FaTools as FaGenericTool,
   FaBars,
   FaTimes,
@@ -49,7 +50,6 @@ import {
 
 // Skill icon map
 const skillIcons = {
-  // Languages
   HTML: <DiHtml5 className="text-4xl text-orange-500" />,
   CSS: <DiCss3 className="text-4xl text-blue-500" />,
   JavaScript: <DiJavascript1 className="text-4xl text-yellow-400" />,
@@ -58,24 +58,20 @@ const skillIcons = {
   "C++": <SiCplusplus className="text-4xl text-blue-700" />,
   Java: <DiJava className="text-4xl text-red-500" />,
   PHP: <DiPhp className="text-4xl text-indigo-500" />,
-  // Frameworks & Libraries (Web)
   React: <DiReact className="text-4xl text-cyan-400" />,
   "Node.js": <DiNodejsSmall className="text-4xl text-green-500" />,
   Express: <SiExpress className="text-4xl text-gray-400" />,
   Tailwind: <SiTailwindcss className="text-4xl text-teal-400" />,
   Bootstrap: <DiBootstrap className="text-4xl text-purple-600" />,
   "Framer Motion": <DiReact className="text-4xl text-purple-500" />,
-  // Data Science / ML Libraries
   Pandas: <SiJupyter className="text-4xl text-orange-600" />,
   "scikit-learn": <FaBrain className="text-4xl text-orange-500" />,
   NumPy: <SiAnaconda className="text-4xl text-green-500" />,
   MLFlow: <SiMlflow className="text-4xl text-blue-400" />,
   "Data Analysis": <FaDatabase className="text-4xl text-purple-400" />,
-  // Databases
   MySQL: <DiMysql className="text-4xl text-blue-400" />,
   PostgreSQL: <DiPostgresql className="text-4xl text-blue-600" />,
   SQLite: <SiSqlite className="text-4xl text-blue-700" />,
-  // Tools & Core
   Git: <DiGit className="text-4xl text-orange-600" />,
   GitHub: <DiGithubBadge className="text-4xl text-white" />,
   "VS Code": <DiVisualstudio className="text-4xl text-blue-500" />,
@@ -110,52 +106,61 @@ const cardSkills = [
 // Project Data
 const projects = [
   {
-    title: "College Companion Website",
-    desc: "Student assistant web app to manage attendance and career planning.",
-    tech: ["React", "Node.js", "MySQL"],
+    title: "DristiScan - AI Code Security Scanner",
+    desc: "AI-assisted code security scanner that highlights insecure patterns, prioritizes remediation, and helps teams catch risks earlier in the development lifecycle.",
+    tech: ["React", "FastAPI", "SAST", "OWASP"],
+    github: "https://github.com/tanyajha29/Drishti-Scan",
+    demo: "",
+    image: "/images/Dristi_scan.jpg",
+  },
+  {
+    title: "College Companion Platform",
+    desc: "Full-stack student productivity platform that streamlines attendance tracking, academic planning, reminders, and day-to-day campus workflows in one secure experience.",
+    tech: ["React", "Node.js", "MySQL", "Secure Auth"],
     github: "https://github.com/tanyajha29/college-companion",
-    demo: "#",
+    demo: "",
     image: "/images/college_companion.jpg",
   },
   {
-    title: "CryptX",
-    desc: "Containerized full-stack data platform for market and security intelligence with PostgreSQL and Docker.",
-    tech: ["Python", "Gunicorn", "PostgreSQL", "Docker"],
-    github: "https://github.com/tanyajha29/CryptX",
-    demo: "#",
-    image: "/images/cryptX.png",
+    title: "Global Conflict Impact Intelligence Platform",
+    desc: "RAG-powered intelligence platform that converts conflict-related reports into searchable summaries, trend signals, and faster decision support for analytical workflows.",
+    tech: ["React", "FastAPI", "RAG", "PostgreSQL"],
+    github: "",
+    demo: "",
+    image: "/images/binary_bg.png",
   },
   {
-    title: "Heart Guard",
-    desc: "ML model to predict heart disease risk from health data.",
-    tech: ["Python", "Pandas", "SQLite"],
-    github: "https://github.com/tanyajha29/Heart_disease_Predictor",
-    demo: "#",
-    image: "/images/Heart_guard.png",
+    title: "FormOS - Intelligent Document Processing Platform",
+    desc: "Document intelligence platform that uses OCR and AI extraction to transform unstructured forms into validated structured records with faster review turnaround.",
+    tech: ["OCR", "OpenAI/Ollama", "AWS", "Docker"],
+    github: "",
+    demo: "",
+    image: "/images/gradient_bg.jpg",
+  },
+];
+
+const aboutStats = [
+  "4+ Major Projects",
+  "VAPT Experience",
+  "AWS + Docker",
+  "AI/RAG Systems",
+];
+
+const aboutHighlights = [
+  {
+    title: "Full-Stack Development",
+    description: "React, Node.js, FastAPI, PostgreSQL, MongoDB",
+    icon: <FaLaptopCode className="text-3xl text-cyan-300" />,
   },
   {
-    title: "Credit Fraud Prediction",
-    desc: "Data warehousing and mining project to predict credit card fraud.",
-    tech: ["MLFlow", "Python", "SQLite"],
-    github: "https://github.com/tanyajha29/credit_fraud_dbt",
-    demo: "#",
-    image: "/images/Credit_Fraud.jpg",
+    title: "Cybersecurity & DevSecOps",
+    description: "VAPT, SAST, OWASP, Burp Suite, SQLMap, secure auth",
+    icon: <FaShieldAlt className="text-3xl text-purple-300" />,
   },
   {
-    title: "MindBreak AI",
-    desc: "AI-driven productivity companion that helps break down tasks and keep focus.",
-    tech: ["Node.js", "Express", "MongoDB (Mongoose)", "EJS templating"],
-    github: "https://github.com/tanyajha29/MindBreak-AI",
-    demo: "#",
-    image: "/images/mind_break.jpg",
-  },
-  {
-    title: "Drishti Scan",
-    desc: "Computer vision project for document scanning and enhancement.",
-    tech: ["Python", "Computer Vision", "Machine Learning"],
-    github: "https://github.com/tanyajha29/Drishti-Scan",
-    demo: "#",
-    image: "/images/Dristi_scan.jpg",
+    title: "AI + Cloud Systems",
+    description: "RAG, OCR, OpenAI/Ollama, AWS S3/RDS/EC2, Docker",
+    icon: <FaBrain className="text-3xl text-cyan-300" />,
   },
 ];
 
@@ -175,7 +180,7 @@ const Nav = () => {
     <a
       href={href}
       onClick={() => setIsOpen(false)}
-      className="text-3xl font-semibold text-gray-200 hover:text-cyan-400 transition-colors py-4"
+      className="py-4 text-3xl font-semibold text-gray-200 transition-colors hover:text-cyan-400"
     >
       {children}
     </a>
@@ -183,32 +188,30 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-40 top-0 left-0 bg-slate-900/70 backdrop-blur-sm shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-2 flex items-center justify-between">
+      <nav className="fixed left-0 top-0 z-40 w-full bg-slate-900/70 shadow-lg backdrop-blur-sm">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 sm:px-8">
           <div className="flex items-center gap-4">
             <a href="#hero">
               <img
                 src="/images/my_img.jpeg"
                 alt="Tanya Jha Profile"
-                className="w-10 h-10 rounded-full object-cover border-2 border-cyan-400 shadow-xl transition-all hover:scale-105"
+                className="h-10 w-10 rounded-full border-2 border-cyan-400 object-cover shadow-xl transition-all hover:scale-105"
               />
             </a>
-            <span className="text-xl font-bold text-cyan-400 tracking-wider hidden sm:block">
-              Tanya Jha
-            </span>
+            <span className="hidden text-xl font-bold tracking-wider text-cyan-400 sm:block">Tanya Jha</span>
           </div>
 
-          <div className="hidden md:flex items-center gap-6 text-gray-200 font-medium">
-            <a href="#about" className="hover:text-cyan-400 transition">
+          <div className="hidden items-center gap-6 font-medium text-gray-200 md:flex">
+            <a href="#about" className="transition hover:text-cyan-400">
               About
             </a>
-            <a href="#skills" className="hover:text-cyan-400 transition">
+            <a href="#skills" className="transition hover:text-cyan-400">
               Skills
             </a>
-            <a href="#projects" className="hover:text-cyan-400 transition">
+            <a href="#projects" className="transition hover:text-cyan-400">
               Projects
             </a>
-            <a href="#contact" className="hover:text-cyan-400 transition">
+            <a href="#contact" className="transition hover:text-cyan-400">
               Contact
             </a>
           </div>
@@ -216,7 +219,7 @@ const Nav = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-200 hover:text-cyan-400 transition-colors p-2"
+              className="p-2 text-gray-200 transition-colors hover:text-cyan-400"
               aria-label="Toggle menu"
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -233,11 +236,11 @@ const Nav = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 w-full h-screen bg-slate-900/95 backdrop-blur-lg z-30 flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 z-30 flex h-screen w-full flex-col items-center justify-center bg-slate-900/95 backdrop-blur-lg md:hidden"
           >
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-6 text-gray-300 hover:text-cyan-400 transition-colors p-2"
+              className="absolute right-6 top-4 p-2 text-gray-300 transition-colors hover:text-cyan-400"
               aria-label="Close menu"
             >
               <FaTimes size={30} />
@@ -259,8 +262,7 @@ const Nav = () => {
 // Hero section
 const Hero = ({ name }) => {
   const [isHovered, setIsHovered] = useState(false);
-
-  const roles = ["Web Developer", "ML Explorer", "Cybersecurity Enthusiast"];
+  const roles = ["Full-Stack Developer", "Cybersecurity Enthusiast", "AI + DevSecOps Builder"];
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
 
   useEffect(() => {
@@ -293,12 +295,12 @@ const Hero = ({ name }) => {
   return (
     <header
       id="hero"
-      className="min-h-screen relative pt-20 flex items-start overflow-hidden text-center text-white bg-[#1a1a36]"
+      className="relative flex min-h-screen items-start overflow-hidden bg-[#1a1a36] pt-20 text-center text-white"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="absolute inset-0 bg-cover bg-center z-0 transition-opacity duration-500"
+        className="absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-500"
         style={{ backgroundImage: "url(/images/gradient_bg.jpg)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 0.4 : 0 }}
@@ -307,25 +309,25 @@ const Hero = ({ name }) => {
       <motion.img
         src="/images/A_PC.png"
         alt="Developer PC Setup"
-        className="absolute bottom-0 inset-x-0 mx-auto w-full max-w-lg opacity-90 xl:opacity-100 z-10 pointer-events-none"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 mx-auto w-full max-w-lg opacity-90 xl:opacity-100"
         variants={pcImageVariants}
         animate="animate"
       />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-20">
+      <div className="relative z-20 mx-auto max-w-6xl px-6">
         <motion.h1
-          className="text-5xl sm:text-6xl md:text-8xl font-extrabold mb-6"
+          className="mb-6 text-5xl font-extrabold sm:text-6xl md:text-8xl"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           Hi, I'm{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-red-400">
+          <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-red-400 bg-clip-text text-transparent">
             {name}
           </span>
         </motion.h1>
 
-        <div className="relative h-12 w-full mx-auto max-w-lg flex items-center justify-center">
+        <div className="relative mx-auto flex h-12 w-full max-w-2xl items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.h2
               key={currentRoleIndex}
@@ -333,7 +335,7 @@ const Hero = ({ name }) => {
               animate="visible"
               exit="exit"
               variants={roleVariants}
-              className="absolute text-xl sm:text-2xl md:text-3xl font-medium text-cyan-300 tracking-wide"
+              className="absolute px-4 text-xl font-medium leading-snug tracking-wide text-cyan-300 sm:text-2xl md:text-3xl"
             >
               {roles[currentRoleIndex]}
             </motion.h2>
@@ -345,26 +347,104 @@ const Hero = ({ name }) => {
 };
 
 // About section
-const About = () => (
-  <section id="about" className="py-24 bg-slate-900/30">
-    <div className="max-w-4xl mx-auto px-6">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-cyan-400 mb-6">About Me</h2>
-      <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
-        I'm an IT student who loves building secure, scalable, user-friendly products. My focus is full-stack web
-        development (MERN) backed by a strong foundation in cybersecurity and machine learning.
-      </p>
-      <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-6">
-        Hands-on training includes: Sumago Infotech (2023–2024) where I contributed to full-stack modules with secure
-        coding and performance tuning, and L&T Skill Trainers Academy (2024–2025) where I built and evaluated ML models
-        in collaborative projects.
-      </p>
-      <p className="text-lg font-medium text-purple-400 leading-relaxed">
-        Education: B.E. in Information Technology (2024–2027) at Vidyalankar Institute of Technology, GPA 9.4; Diploma
-        in Computer Engineering (2021–2024) from Government Polytechnic, Thane, 88.93%.
-      </p>
-    </div>
-  </section>
-);
+const About = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 32 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  };
+
+  return (
+    <section id="about" className="bg-slate-900/30 py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          variants={fadeInUp}
+          className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] xl:gap-14"
+        >
+          <div>
+            <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-slate-800/60 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300 shadow-lg shadow-cyan-500/10">
+              Full-Stack • Cybersecurity • AI
+            </span>
+            <h2 className="mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
+              Building secure, intelligent, and scalable digital products.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
+              I'm Tanya Jha, an Information Technology student and full-stack developer focused on building secure,
+              AI-powered web applications. My work combines React, Node.js, FastAPI, PostgreSQL, AWS, Docker, and
+              cybersecurity practices to create practical systems such as AI code scanners, document intelligence
+              platforms, and student productivity tools.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-purple-500 px-7 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition duration-300 hover:scale-[1.02]"
+              >
+                View Projects
+              </a>
+              <a
+                href="/Tanya_Resume.pdf"
+                className="inline-flex items-center justify-center rounded-full border border-cyan-400/20 bg-slate-800/60 px-7 py-3 text-sm font-semibold text-slate-100 shadow-lg shadow-cyan-500/10 transition duration-300 hover:border-cyan-300/40 hover:bg-slate-700/60"
+              >
+                Download Resume
+              </a>
+            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 24 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            className="relative mx-auto w-full max-w-sm"
+          >
+            <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-cyan-500/20 via-purple-500/10 to-transparent blur-2xl" />
+            <div className="rounded-3xl border border-cyan-400/20 bg-slate-800/40 p-4 shadow-lg shadow-cyan-500/10 backdrop-blur-md sm:p-6">
+              <div className="rounded-[1.4rem] border border-white/5 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-800/40 p-4">
+                <Lottie animationData={chatbotAnimation} loop autoplay className="mx-auto w-full max-w-sm" />
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {aboutStats.map((stat, index) => (
+            <motion.div
+              key={stat}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: index * 0.08, duration: 0.5 }}
+              className="rounded-2xl border border-cyan-400/20 bg-slate-800/40 px-5 py-6 text-center shadow-lg shadow-cyan-500/10 backdrop-blur-md"
+            >
+              <p className="text-lg font-semibold text-slate-100">{stat}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {aboutHighlights.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ delay: index * 0.1, duration: 0.55 }}
+              className="rounded-3xl border border-cyan-400/20 bg-slate-800/40 p-6 shadow-lg shadow-cyan-500/10 backdrop-blur-md"
+            >
+              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20">
+                {item.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-slate-300">{item.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 // Skills section
 const Skills = () => {
@@ -386,7 +466,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ delay: index * 0.05, duration: 0.3 }}
-          className="p-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 transition-colors shadow-md"
+          className="rounded-lg bg-slate-700/50 p-2 shadow-md transition-colors hover:bg-slate-700"
           title={skill}
         >
           {skillIcons[skill] || <FaGenericTool className="text-4xl text-gray-400" />}
@@ -396,11 +476,11 @@ const Skills = () => {
   );
 
   return (
-    <section id="skills" className="py-24 bg-[#0d0d1f]">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-cyan-400 mb-12">Skills & Tools</h2>
+    <section id="skills" className="bg-[#0d0d1f] py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <h2 className="mb-12 text-4xl font-extrabold text-cyan-400 sm:text-5xl">Skills & Tools</h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {cardSkills.map((card, i) => (
             <motion.div
               key={card.title}
@@ -409,9 +489,9 @@ const Skills = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
-              className={`p-8 bg-slate-800/70 rounded-2xl shadow-xl overflow-hidden border ${card.color} transition-all hover:shadow-lg hover:shadow-cyan-500/10`}
+              className={`overflow-hidden rounded-2xl border ${card.color} bg-slate-800/70 p-8 shadow-xl transition-all hover:shadow-lg hover:shadow-cyan-500/10`}
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="mb-6 flex items-center gap-3">
                 <span
                   className={`text-4xl text-white ${
                     card.title.includes("Web")
@@ -447,51 +527,58 @@ const Skills = () => {
 
 // Projects
 const ProjectsSection = () => (
-  <section id="projects" className="py-24 bg-slate-900/30">
-    <div className="max-w-6xl mx-auto px-6">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-cyan-400 mb-12"> Projects</h2>
-      <div className="grid md:grid-cols-3 gap-8">
+  <section id="projects" className="bg-slate-900/30 py-24">
+    <div className="mx-auto max-w-6xl px-6">
+      <h2 className="mb-4 text-4xl font-extrabold text-cyan-400 sm:text-5xl">Projects</h2>
+      <p className="mb-12 max-w-3xl text-lg text-slate-300">
+        Selected work across secure software engineering, AI systems, and full-stack product development.
+      </p>
+      <div className="grid gap-8 md:grid-cols-2">
         {projects.map((p, i) => (
           <motion.article
-            key={i}
+            key={p.title}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: i * 0.15, duration: 0.6 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0, 255, 255, 0.2)" }}
-            className="bg-slate-800/70 rounded-2xl shadow-xl overflow-hidden border border-slate-700/50"
+            whileHover={{ scale: 1.02, boxShadow: "0 18px 40px rgba(34, 211, 238, 0.18)" }}
+            className="overflow-hidden rounded-3xl border border-cyan-400/20 bg-slate-800/40 shadow-xl shadow-cyan-500/10 backdrop-blur-md"
           >
             <div className="h-48 bg-slate-700/40">
-              <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+              <img src={p.image} alt={p.title} className="h-full w-full object-cover" />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-semibold text-cyan-300 mb-3">{p.title}</h3>
-              <p className="text-gray-400 mb-4 text-base leading-relaxed">{p.desc}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <h3 className="mb-3 text-2xl font-semibold text-cyan-300">{p.title}</h3>
+              <p className="mb-4 text-base leading-relaxed text-gray-400">{p.desc}</p>
+              <div className="mb-4 flex flex-wrap gap-2">
                 {p.tech.map((t) => (
-                  <span key={t} className="text-xs px-2 py-1 bg-purple-700/30 text-purple-200 rounded-lg">
+                  <span key={t} className="rounded-lg bg-purple-700/30 px-2 py-1 text-xs text-purple-200">
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="flex items-center justify-between mt-4">
-                <div className="flex gap-4 items-center">
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm font-medium text-cyan-400 hover:text-cyan-300 transition"
-                  >
-                    View Code ->
-                  </a>
-                  {p.demo !== "#" && p.demo && (
+              <div className="mt-4 flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  {p.github ? (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm font-medium text-cyan-400 transition hover:text-cyan-300"
+                    >
+                      View Code →
+                    </a>
+                  ) : (
+                    <span className="text-sm font-medium text-slate-400">Code available on request</span>
+                  )}
+                  {p.demo && (
                     <a
                       href={p.demo}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-medium text-pink-400 hover:text-pink-300 transition"
+                      className="text-sm font-medium text-pink-400 transition hover:text-pink-300"
                     >
-                      Live Demo ->
+                      Live Demo →
                     </a>
                   )}
                 </div>
@@ -506,19 +593,19 @@ const ProjectsSection = () => (
 
 // Contact
 const Contact = ({ github, linkedin }) => (
-  <section id="contact" className="py-24 flex items-center justify-center overflow-hidden bg-[#0d0d1f]">
-    <div className="max-w-4xl mx-auto px-6 relative z-10">
-      <div className="bg-slate-800/70 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-cyan-500/10 text-center border border-slate-700/50">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-cyan-400">Let's build something together</h2>
-        <p className="mb-8 text-lg sm:text-xl text-gray-300">
+  <section id="contact" className="flex items-center justify-center overflow-hidden bg-[#0d0d1f] py-24">
+    <div className="relative z-10 mx-auto max-w-4xl px-6">
+      <div className="rounded-3xl border border-cyan-400/20 bg-slate-800/40 p-8 text-center shadow-2xl shadow-cyan-500/10 backdrop-blur-md sm:p-10">
+        <h2 className="mb-4 text-3xl font-bold text-cyan-400 sm:text-4xl">Let's build something together</h2>
+        <p className="mb-8 text-lg text-gray-300 sm:text-xl">
           I'm open to internships, freelance work, and collaborations. Reach out via email or connect on social
           platforms.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10">
+        <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <a
             href="mailto:jhatanya211@gmail.com"
-            className="w-full sm:w-auto text-center px-7 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 font-semibold"
+            className="w-full rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-7 py-3 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-purple-500/50 sm:w-auto"
           >
             Email Me
           </a>
@@ -526,7 +613,7 @@ const Contact = ({ github, linkedin }) => (
             href={github}
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto text-center px-6 py-3 border border-gray-400 text-gray-200 rounded-full hover:bg-white/10 transition font-semibold"
+            className="w-full rounded-full border border-cyan-400/20 px-6 py-3 text-center font-semibold text-gray-200 transition hover:bg-white/10 sm:w-auto"
           >
             GitHub
           </a>
@@ -534,18 +621,18 @@ const Contact = ({ github, linkedin }) => (
             href={linkedin}
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto text-center px-6 py-3 border border-gray-400 text-gray-200 rounded-full hover:bg-white/10 transition font-semibold"
+            className="w-full rounded-full border border-cyan-400/20 px-6 py-3 text-center font-semibold text-gray-200 transition hover:bg-white/10 sm:w-auto"
           >
             LinkedIn
           </a>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-slate-700/50">
-          <h3 className="text-xl sm:text-2xl font-semibold text-purple-400 mb-4">Quick Contact Details</h3>
-          <p className="text-base sm:text-lg text-gray-300 mb-2">
+        <div className="mt-8 border-t border-slate-700/50 pt-8">
+          <h3 className="mb-4 text-xl font-semibold text-purple-400 sm:text-2xl">Quick Contact Details</h3>
+          <p className="mb-2 text-base text-gray-300 sm:text-lg">
             <span className="font-bold text-cyan-300">Email:</span> jhatanya211@gmail.com
           </p>
-          <p className="text-base sm:text-lg text-gray-300">
+          <p className="text-base text-gray-300 sm:text-lg">
             <span className="font-bold text-cyan-300">Location:</span> Kalyan, Maharashtra, India
           </p>
         </div>
@@ -554,7 +641,7 @@ const Contact = ({ github, linkedin }) => (
           <a
             href="/Tanya_Resume.pdf"
             download
-            className="inline-block px-8 py-3 bg-white text-blue-600 rounded-full font-bold shadow-md hover:scale-[1.02] transition"
+            className="inline-block rounded-full bg-white px-8 py-3 font-bold text-blue-600 shadow-md transition hover:scale-[1.02]"
           >
             Download Resume (PDF)
           </a>
@@ -565,7 +652,7 @@ const Contact = ({ github, linkedin }) => (
 );
 
 const Footer = () => (
-  <footer className="py-6 text-center text-sm text-slate-500 bg-[#0d0d1f] border-t border-slate-800">
+  <footer className="border-t border-slate-800 bg-[#0d0d1f] py-6 text-center text-sm text-slate-500">
     (c) {new Date().getFullYear()} Tanya Jha - Designed for a pro-level look
   </footer>
 );
@@ -579,15 +666,8 @@ export default function App() {
     await loadFull(engine);
   }, []);
 
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  }, []);
-
   return (
-    <div className="relative text-white overflow-x-hidden min-h-screen">
+    <div className="relative min-h-screen overflow-x-hidden text-white">
       <AnimatedBackground />
       <Particles
         id="tsparticles"
@@ -630,7 +710,10 @@ export default function App() {
         <About />
         <Skills />
         <ProjectsSection />
-        <Contact github="https://github.com/tanyajha18" linkedin="https://linkedin.com/in/tanyajha18" />
+        <Contact
+          github="https://github.com/tanyajha29"
+          linkedin="https://www.linkedin.com/in/tanya-jha-b2b72a2a0/"
+        />
       </main>
       <Footer />
     </div>
