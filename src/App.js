@@ -1,8 +1,6 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Lottie from "lottie-react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
 import AnimatedBackground from "./components/animated_background";
 import chatbotAnimation from "./assets/chatbot.json";
 
@@ -150,31 +148,6 @@ const projects = [
   },
 ];
 
-const aboutStats = [
-  "4+ Major Projects",
-  "VAPT Experience",
-  "AWS + Docker",
-  "AI/RAG Systems",
-];
-
-const aboutHighlights = [
-  {
-    title: "Full-Stack Development",
-    description: "React, Node.js, FastAPI, PostgreSQL, MongoDB",
-    icon: <FaLaptopCode className="text-3xl text-cyan-300" />,
-  },
-  {
-    title: "Cybersecurity & DevSecOps",
-    description: "VAPT, SAST, OWASP, Burp Suite, SQLMap, secure auth",
-    icon: <FaShieldAlt className="text-3xl text-purple-300" />,
-  },
-  {
-    title: "AI + Cloud Systems",
-    description: "RAG, OCR, OpenAI/Ollama, AWS S3/RDS/EC2, Docker",
-    icon: <FaBrain className="text-3xl text-cyan-300" />,
-  },
-];
-
 /* ---------- Page Components ---------- */
 
 // Navbar with hamburger for mobile
@@ -213,9 +186,6 @@ const Nav = () => {
           </div>
 
           <div className="hidden items-center gap-6 font-medium text-gray-200 md:flex">
-            <a href="#about" className="transition hover:text-cyan-400">
-              About
-            </a>
             <a href="#skills" className="transition hover:text-cyan-400">
               Skills
             </a>
@@ -258,7 +228,6 @@ const Nav = () => {
             </button>
 
             <nav className="flex flex-col items-center gap-6">
-              <MobileLink href="#about">About</MobileLink>
               <MobileLink href="#skills">Skills</MobileLink>
               <MobileLink href="#projects">Projects</MobileLink>
               <MobileLink href="#contact">Contact</MobileLink>
@@ -354,106 +323,6 @@ const Hero = ({ name }) => {
         </div>
       </div>
     </header>
-  );
-};
-
-// About section
-const About = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  };
-
-  return (
-    <section id="about" className="bg-slate-900/30 py-24">
-      <div className="mx-auto max-w-6xl px-6">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={fadeInUp}
-          className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] xl:gap-14"
-        >
-          <div>
-            <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-slate-800/60 px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300 shadow-lg shadow-cyan-500/10">
-              Full-Stack • Cybersecurity • AI
-            </span>
-            <h2 className="mt-6 max-w-3xl text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-              Building secure, intelligent, and scalable digital products.
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
-              I'm Tanya Jha, an Information Technology student and full-stack developer focused on building secure,
-              AI-powered web applications. My work combines React, Node.js, FastAPI, PostgreSQL, AWS, Docker, and
-              cybersecurity practices to create practical systems such as AI code scanners, document intelligence
-              platforms, and student productivity tools.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="#projects"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 via-cyan-400 to-purple-500 px-7 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition duration-300 hover:scale-[1.02]"
-              >
-                View Projects
-              </a>
-              <a
-                href="/Tanya_Resume.pdf"
-                className="inline-flex items-center justify-center rounded-full border border-cyan-400/20 bg-slate-800/60 px-7 py-3 text-sm font-semibold text-slate-100 shadow-lg shadow-cyan-500/10 transition duration-300 hover:border-cyan-300/40 hover:bg-slate-700/60"
-              >
-                Download Resume
-              </a>
-            </div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 24 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-            className="relative mx-auto w-full max-w-sm"
-          >
-            <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-cyan-500/20 via-purple-500/10 to-transparent blur-2xl" />
-            <div className="rounded-3xl border border-cyan-400/20 bg-slate-800/40 p-4 shadow-lg shadow-cyan-500/10 backdrop-blur-md sm:p-6">
-              <div className="rounded-[1.4rem] border border-white/5 bg-gradient-to-br from-slate-900/80 via-slate-900/60 to-slate-800/40 p-4">
-                <Lottie animationData={chatbotAnimation} loop autoplay className="mx-auto w-full max-w-sm" />
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {aboutStats.map((stat, index) => (
-            <motion.div
-              key={stat}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ delay: index * 0.08, duration: 0.5 }}
-              className="rounded-2xl border border-cyan-400/20 bg-slate-800/40 px-5 py-6 text-center shadow-lg shadow-cyan-500/10 backdrop-blur-md"
-            >
-              <p className="text-lg font-semibold text-slate-100">{stat}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {aboutHighlights.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ delay: index * 0.1, duration: 0.55 }}
-              className="rounded-3xl border border-cyan-400/20 bg-slate-800/40 p-6 shadow-lg shadow-cyan-500/10 backdrop-blur-md"
-            >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-base leading-relaxed text-slate-300">{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 };
 
@@ -719,58 +588,32 @@ const ProjectsSection = () => (
 
 // Contact
 const Contact = ({ github, linkedin }) => (
-  <section id="contact" className="flex items-center justify-center overflow-hidden bg-[#0d0d1f] py-24">
-    <div className="relative z-10 mx-auto max-w-4xl px-6">
-      <div className="rounded-3xl border border-cyan-400/20 bg-slate-800/40 p-8 text-center shadow-2xl shadow-cyan-500/10 backdrop-blur-md sm:p-10">
-        <h2 className="mb-4 text-3xl font-bold text-cyan-400 sm:text-4xl">Let's build something together</h2>
-        <p className="mb-8 text-lg text-gray-300 sm:text-xl">
-          I'm open to internships, freelance work, and collaborations. Reach out via email or connect on social
-          platforms.
-        </p>
-
-        <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-          <a
-            href="mailto:jhatanya211@gmail.com"
-            className="w-full rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 px-7 py-3 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-purple-500/50 sm:w-auto"
-          >
-            Email Me
-          </a>
-          <a
-            href={github}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full rounded-full border border-cyan-400/20 px-6 py-3 text-center font-semibold text-gray-200 transition hover:bg-white/10 sm:w-auto"
-          >
-            GitHub
-          </a>
-          <a
-            href={linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="w-full rounded-full border border-cyan-400/20 px-6 py-3 text-center font-semibold text-gray-200 transition hover:bg-white/10 sm:w-auto"
-          >
-            LinkedIn
-          </a>
-        </div>
-
-        <div className="mt-8 border-t border-slate-700/50 pt-8">
-          <h3 className="mb-4 text-xl font-semibold text-purple-400 sm:text-2xl">Quick Contact Details</h3>
-          <p className="mb-2 text-base text-gray-300 sm:text-lg">
-            <span className="font-bold text-cyan-300">Email:</span> jhatanya211@gmail.com
-          </p>
-          <p className="text-base text-gray-300 sm:text-lg">
-            <span className="font-bold text-cyan-300">Location:</span> Kalyan, Maharashtra, India
-          </p>
-        </div>
-
-        <div className="mt-8">
-          <a
-            href="/Tanya_Resume.pdf"
-            download
-            className="inline-block rounded-full bg-white px-8 py-3 font-bold text-blue-600 shadow-md transition hover:scale-[1.02]"
-          >
-            Download Resume (PDF)
-          </a>
+  <section id="contact" className="relative overflow-hidden bg-[#0b1220] py-24">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_25%,rgba(34,211,238,0.12),transparent_30%),radial-gradient(circle_at_85%_75%,rgba(168,85,247,0.14),transparent_34%)]" />
+    <div className="relative z-10 mx-auto max-w-6xl px-6">
+      <div className="overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-slate-900/75 shadow-2xl shadow-cyan-950/40 backdrop-blur-xl">
+        <div className="grid items-center lg:grid-cols-[0.9fr_1.1fr]">
+          <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="border-b border-cyan-300/15 bg-slate-950/40 p-8 sm:p-12 lg:border-b-0 lg:border-r">
+            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-300">Open channel</p>
+            <h2 className="mt-4 text-4xl font-extrabold leading-tight text-white sm:text-5xl">Let&apos;s build something meaningful.</h2>
+            <p className="mt-5 text-base leading-7 text-slate-300 sm:text-lg">Have an idea, opportunity, or security problem worth exploring? I&apos;m always open to thoughtful collaborations.</p>
+            <div className="mt-8 rounded-3xl border border-cyan-300/15 bg-cyan-300/[0.06] p-3">
+              <Lottie animationData={chatbotAnimation} loop autoplay aria-label="Animated chatbot illustration" className="mx-auto w-full max-w-xs" />
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="p-8 sm:p-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-purple-300">Contact details</p>
+            <div className="mt-6 grid gap-3">
+              <a href="mailto:jhatanya211@gmail.com" className="contact-row"><span>Email</span><strong>jhatanya211@gmail.com</strong></a>
+              <div className="contact-row"><span>Location</span><strong>Kalyan, Maharashtra, India</strong></div>
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="mailto:jhatanya211@gmail.com" className="contact-primary">Email Me</a>
+              <a href={github} target="_blank" rel="noreferrer" className="contact-secondary">GitHub</a>
+              <a href={linkedin} target="_blank" rel="noreferrer" className="contact-secondary">LinkedIn</a>
+            </div>
+            <a href="/Tanya_Resume.pdf" download className="mt-8 inline-flex text-sm font-bold text-cyan-300 transition hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">Download Resume (PDF) →</a>
+          </motion.div>
         </div>
       </div>
     </div>
@@ -788,52 +631,12 @@ Main App Component
 ---------------------------------------------------- */
 
 export default function App() {
-  const particlesInit = useCallback(async (engine) => {
-    await loadFull(engine);
-  }, []);
-
   return (
     <div className="relative min-h-screen overflow-x-hidden text-white">
       <AnimatedBackground />
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: { color: { value: "#0d0d1f" } },
-          fpsLimit: 60,
-          interactivity: {
-            events: { onHover: { enable: true, mode: "repulse" } },
-            modes: { repulse: { distance: 100, duration: 0.4 } },
-          },
-          particles: {
-            number: { value: 80 },
-            color: { value: "#00ffff" },
-            links: {
-              enable: true,
-              color: "#00ffff",
-              distance: 120,
-              opacity: 0.3,
-              width: 1,
-            },
-            move: {
-              enable: true,
-              speed: 1,
-              direction: "none",
-              outModes: "out",
-            },
-            size: { value: { min: 1, max: 3 } },
-            opacity: { value: 0.5 },
-            shape: { type: "circle" },
-          },
-          detectRetina: true,
-        }}
-        className="fixed inset-0 -z-10"
-      />
-
       <Nav />
       <main>
         <Hero name="Tanya Jha" />
-        <About />
         <Skills />
         <ProjectsSection />
         <Contact

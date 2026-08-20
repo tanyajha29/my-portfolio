@@ -2,93 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth transition for theme changes */
 :root {
-  --transition-fast: 180ms;
+  --page: #0b1220;
+  --surface: #111c2e;
+  --surface-soft: #17243a;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --border: rgba(103, 232, 249, 0.2);
+  --cyan: #67e8f9;
+  --purple: #c4b5fd;
 }
 
-/* src/index.css (or whichever file holds your Tailwind imports) */
+html, body, #root { min-height: 100%; }
+html { background: var(--page); scroll-behavior: smooth; }
+body { margin: 0; overflow-x: hidden; background: var(--page); color: var(--text); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-@keyframes pulse-gradient {
-  0% {
-    background-size: 400% 400%;
-    background-position: 0% 50%;
-  }
-  50% {
-    background-size: 400% 400%;
-    background-position: 100% 50%;
-  }
-  100% {
-    background-size: 400% 400%;
-    background-position: 0% 50%;
-  }
-}
-@keyframes moveBackground {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 1000px 1000px;
-  }
-}
-/* Add this to your CSS file (e.g., App.css) */
-@keyframes matrix-scroll {
-  0% {
-    background-position: 0 0; /* Start at the top */
-  }
-  100% {
-    background-position: 0 250px; /* Scroll down by the height of one tile (adjust 250px to your backgroundSize) */
-  }
-}
+* { box-sizing: border-box; }
+a, button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 
-/* Extend Tailwind's utilities to include the animation */
-@layer utilities {
-  .animate-bg-pulse {
-    animation: pulse-gradient 25s ease infinite; /* 25 seconds for a very slow, subtle movement */
-  }
-}
+.contact-row { display: flex; flex-direction: column; gap: .35rem; border: 1px solid var(--border); border-radius: 1rem; background: rgba(23,36,58,.55); padding: 1rem 1.1rem; color: var(--muted); transition: border-color 180ms ease, background 180ms ease; }
+.contact-row:hover { border-color: rgba(103,232,249,.5); background: rgba(34,211,238,.08); }
+.contact-row span { font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); }
+.contact-row strong { color: var(--text); font-size: .95rem; overflow-wrap: anywhere; }
+.contact-primary, .contact-secondary { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: .75rem 1.25rem; font-weight: 700; transition: transform 180ms ease, background 180ms ease, border-color 180ms ease; }
+.contact-primary { background: var(--cyan); color: #07111f; }
+.contact-secondary { border: 1px solid var(--border); color: var(--text); }
+.contact-primary:hover, .contact-secondary:hover { transform: translateY(-2px); }
+.contact-secondary:hover { border-color: rgba(103,232,249,.55); background: rgba(103,232,249,.1); }
 
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+#waves, #waves svg { pointer-events: none; }
+.neon { filter: drop-shadow(0 0 8px rgba(103,232,249,.35)); }
+.full-screen-section { min-height: 100vh; width: 100%; }
 
-html, body, #root {
-  height: 100%;
-}
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  background: linear-gradient(135deg, #050505 0%, #0a0a1a 50%, #12122a 100%);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
-  color: #fff;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-/* Optional: improve font rendering */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Neon glow helper for any elements if needed */
-.neon {
-  filter: drop-shadow(0 0 8px rgba(99,102,241,0.35)) drop-shadow(0 0 16px rgba(99,102,241,0.2));
-}
-
-/* Make sure svg waves do not block clicks */
-#waves, #waves svg {
-  pointer-events: none;
-}
-
-/* small responsive tweaks */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
+@keyframes matrix-scroll { from { background-position: 0 0; } to { background-position: 0 250px; } }
+@keyframes pulse-gradient { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.animate-bg-pulse { animation: pulse-gradient 25s ease infinite; }
