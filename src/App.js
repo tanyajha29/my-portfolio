@@ -106,11 +106,25 @@ const cardSkills = [
 // Project Data
 const projects = [
   {
+    title: "RecruitSafe",
+    desc: "An intelligent recruitment security platform designed to detect and analyze suspicious job postings, recruitment scams, and potentially fraudulent hiring activity, helping candidates make safer decisions during the job search.",
+    tech: ["React", "FastAPI", "Python", "AI/ML", "Cybersecurity"],
+    github: "https://github.com/tanyajha29/RecruitSafe",
+    visual: "recruitsafe",
+    featured: true,
+  },
+  {
+    title: "DiagramGenie",
+    desc: "An AI-powered diagram generation platform that transforms natural-language descriptions into structured technical diagrams such as flowcharts, system architectures, ER diagrams, and other visual representations.",
+    tech: ["React", "FastAPI", "AI", "Mermaid", "Full Stack"],
+    github: "https://github.com/tanyajha29/DiagramGenie",
+    visual: "diagramgenie",
+  },
+  {
     title: "DristiScan - AI Code Security Scanner",
     desc: "AI-assisted code security scanner that highlights insecure patterns, prioritizes remediation, and helps teams catch risks earlier in the development lifecycle.",
     tech: ["React", "FastAPI", "SAST", "OWASP"],
     github: "https://github.com/tanyajha29/Drishti-Scan",
-    demo: "",
     image: "/images/Dristi_scan.jpg",
   },
   {
@@ -118,7 +132,6 @@ const projects = [
     desc: "Full-stack student productivity platform that streamlines attendance tracking, academic planning, reminders, and day-to-day campus workflows in one secure experience.",
     tech: ["React", "Node.js", "MySQL", "Secure Auth"],
     github: "https://github.com/tanyajha29/college-companion",
-    demo: "",
     image: "/images/college_companion.jpg",
   },
   {
@@ -126,7 +139,6 @@ const projects = [
     desc: "RAG-powered intelligence platform that converts conflict-related reports into searchable summaries, trend signals, and faster decision support for analytical workflows.",
     tech: ["React", "FastAPI", "RAG", "PostgreSQL"],
     github: "",
-    demo: "",
     image: "/images/binary_bg.png",
   },
   {
@@ -134,7 +146,6 @@ const projects = [
     desc: "Document intelligence platform that uses OCR and AI extraction to transform unstructured forms into validated structured records with faster review turnaround.",
     tech: ["OCR", "OpenAI/Ollama", "AWS", "Docker"],
     github: "",
-    demo: "",
     image: "/images/gradient_bg.jpg",
   },
 ];
@@ -525,46 +536,161 @@ const Skills = () => {
   );
 };
 
+const RecruitSafeVisual = () => (
+  <div className="relative h-full overflow-hidden rounded-[1.35rem] border border-cyan-300/15 bg-[#08192e]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_18%,rgba(34,211,238,0.28),transparent_28%),radial-gradient(circle_at_84%_24%,rgba(168,85,247,0.22),transparent_28%)]" />
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.06)_1px,transparent_1px)] bg-[size:28px_28px] opacity-60" />
+    <div className="relative flex h-full items-center justify-center p-6">
+      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-slate-950/65 p-4 shadow-2xl shadow-cyan-500/20 backdrop-blur-sm">
+        <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
+          <div>
+            <div className="h-2 w-24 rounded-full bg-cyan-300/80" />
+            <div className="mt-2 h-2 w-16 rounded-full bg-purple-300/50" />
+          </div>
+          <div className="rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-200">
+            Verified
+          </div>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-[0.85fr_1.15fr]">
+          <div className="rounded-xl border border-cyan-300/15 bg-cyan-300/10 p-4">
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-cyan-200/30 bg-slate-950/70">
+              <FaShieldAlt className="text-4xl text-cyan-200" />
+            </div>
+            <div className="mt-4 h-2 rounded-full bg-cyan-200/60" />
+            <div className="mt-2 h-2 w-2/3 rounded-full bg-slate-400/40" />
+          </div>
+          <div className="space-y-3">
+            {["Job source", "Recruiter identity", "Risk signals"].map((label, index) => (
+              <div key={label} className="rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-slate-200">{label}</span>
+                  <span className={index === 2 ? "text-xs text-amber-200" : "text-xs text-cyan-200"}>
+                    {index === 2 ? "Review" : "Clear"}
+                  </span>
+                </div>
+                <div className="mt-2 h-1.5 rounded-full bg-slate-700">
+                  <div
+                    className={`h-full rounded-full ${index === 2 ? "w-2/3 bg-amber-300" : "w-5/6 bg-cyan-300"}`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const DiagramGenieVisual = () => (
+  <div className="relative h-full overflow-hidden rounded-[1.35rem] border border-cyan-300/15 bg-[#101534]">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_20%,rgba(34,211,238,0.24),transparent_26%),radial-gradient(circle_at_18%_72%,rgba(168,85,247,0.22),transparent_30%)]" />
+    <div className="absolute inset-0 bg-[linear-gradient(115deg,transparent_0%,rgba(34,211,238,0.08)_48%,transparent_49%)]" />
+    <div className="relative flex h-full items-center justify-center p-6">
+      <div className="relative h-52 w-full max-w-md rounded-2xl border border-white/10 bg-slate-950/55 p-5 shadow-2xl shadow-purple-500/10 backdrop-blur-sm">
+        <div className="absolute left-[19%] top-[30%] h-px w-[28%] bg-cyan-300/60" />
+        <div className="absolute right-[20%] top-[30%] h-px w-[25%] bg-purple-300/60" />
+        <div className="absolute left-[50%] top-[41%] h-[24%] w-px bg-cyan-300/50" />
+        <div className="absolute left-[30%] top-[68%] h-px w-[40%] bg-cyan-300/35" />
+        {[
+          ["Prompt", "left-[6%] top-[18%]", "border-cyan-300/30 text-cyan-100"],
+          ["Flowchart", "left-[39%] top-[18%]", "border-purple-300/30 text-purple-100"],
+          ["API", "right-[7%] top-[18%]", "border-cyan-300/30 text-cyan-100"],
+          ["Mermaid", "left-[27%] bottom-[14%]", "border-cyan-300/30 text-cyan-100"],
+          ["ERD", "right-[24%] bottom-[14%]", "border-purple-300/30 text-purple-100"],
+        ].map(([label, position, color]) => (
+          <div
+            key={label}
+            className={`absolute ${position} rounded-xl border ${color} bg-slate-900/90 px-4 py-3 text-xs font-bold shadow-lg shadow-cyan-950/50`}
+          >
+            {label}
+          </div>
+        ))}
+        <div className="absolute bottom-5 left-5 right-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2">
+          <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(34,211,238,0.75)]" />
+          <span className="text-xs font-medium text-slate-300">AI diagram pipeline</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const ProjectVisual = ({ type }) => (type === "recruitsafe" ? <RecruitSafeVisual /> : <DiagramGenieVisual />);
+
 // Projects
 const ProjectsSection = () => (
-  <section id="projects" className="bg-slate-900/30 py-24">
+  <section id="projects" className="relative overflow-hidden bg-slate-900/30 py-24">
+    <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_24%,rgba(34,211,238,0.12),transparent_28%),radial-gradient(circle_at_86%_18%,rgba(168,85,247,0.11),transparent_30%)]" />
+    <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(34,211,238,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.03)_1px,transparent_1px)] bg-[size:54px_54px] opacity-40" />
     <div className="mx-auto max-w-6xl px-6">
-      <h2 className="mb-4 text-4xl font-extrabold text-cyan-400 sm:text-5xl">Projects</h2>
-      <p className="mb-12 max-w-3xl text-lg text-slate-300">
-        Selected work across secure software engineering, AI systems, and full-stack product development.
-      </p>
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="mb-12 max-w-3xl">
+        <div className="mb-5 h-1 w-16 rounded-full bg-gradient-to-r from-cyan-300 to-purple-400" />
+        <h2 className="mb-4 text-4xl font-extrabold text-cyan-400 sm:text-5xl">Projects</h2>
+        <p className="text-lg leading-relaxed text-slate-300">
+          Selected projects across AI, cybersecurity, and full-stack development.
+        </p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {projects.map((p, i) => (
           <motion.article
             key={p.title}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 44 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: i * 0.15, duration: 0.6 }}
-            whileHover={{ scale: 1.02, boxShadow: "0 18px 40px rgba(34, 211, 238, 0.18)" }}
-            className="overflow-hidden rounded-3xl border border-cyan-400/20 bg-slate-800/40 shadow-xl shadow-cyan-500/10 backdrop-blur-md"
+            viewport={{ once: true, amount: 0.28 }}
+            transition={{ delay: i * 0.12, duration: 0.58, ease: "easeOut" }}
+            whileHover={{
+              y: -6,
+              boxShadow: p.featured
+                ? "0 20px 46px rgba(34, 211, 238, 0.22)"
+                : "0 18px 42px rgba(34, 211, 238, 0.16)",
+            }}
+            className={`group flex h-full flex-col overflow-hidden rounded-3xl border bg-slate-900/65 p-2.5 shadow-xl backdrop-blur-md transition-colors duration-300 ${
+              p.featured
+                ? "border-cyan-300/35 shadow-cyan-500/15 hover:border-cyan-300/65"
+                : "border-cyan-400/20 shadow-cyan-500/10 hover:border-cyan-300/45"
+            }`}
           >
-            <div className="h-48 bg-slate-700/40">
-              <img src={p.image} alt={p.title} className="h-full w-full object-cover" />
+            <div className="h-44 overflow-hidden rounded-2xl bg-slate-950/60 sm:h-48">
+              <div className="h-full transition-transform duration-700 ease-out group-hover:scale-[1.035]">
+                {p.visual ? (
+                  <ProjectVisual type={p.visual} />
+                ) : (
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover" />
+                )}
+              </div>
             </div>
-            <div className="p-6">
-              <h3 className="mb-3 text-2xl font-semibold text-cyan-300">{p.title}</h3>
-              <p className="mb-4 text-base leading-relaxed text-gray-400">{p.desc}</p>
-              <div className="mb-4 flex flex-wrap gap-2">
+            <div className="flex flex-1 flex-col p-4 sm:p-5">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <h3 className="text-xl font-bold leading-tight text-cyan-200 sm:text-2xl">{p.title}</h3>
+                {p.featured && (
+                  <span className="shrink-0 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-100">
+                    Featured
+                  </span>
+                )}
+              </div>
+
+              <p className="overflow-hidden text-sm leading-relaxed text-slate-300/85 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4]">
+                {p.desc}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
                 {p.tech.map((t) => (
-                  <span key={t} className="rounded-lg bg-purple-700/30 px-2 py-1 text-xs text-purple-200">
+                  <span
+                    key={t}
+                    className="rounded-full border border-cyan-300/15 bg-cyan-300/[0.08] px-2.5 py-1 text-[11px] font-semibold text-cyan-100 shadow-sm shadow-cyan-950/40"
+                  >
                     {t}
                   </span>
                 ))}
               </div>
-              <div className="mt-4 flex items-center justify-between">
+              <div className="mt-auto pt-5">
                 <div className="flex items-center gap-4">
                   {p.github ? (
                     <a
                       href={p.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-sm font-medium text-cyan-400 transition hover:text-cyan-300"
+                      className="inline-flex text-sm font-bold text-cyan-300 transition duration-300 hover:translate-x-1 hover:text-cyan-100"
                     >
                       View Code →
                     </a>
