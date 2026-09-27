@@ -104,20 +104,12 @@ const cardSkills = [
 // Project Data
 const projects = [
   {
-    title: "RecruitSafe",
-    desc: "An intelligent recruitment security platform designed to detect and analyze suspicious job postings, recruitment scams, and potentially fraudulent hiring activity, helping candidates make safer decisions during the job search.",
-    tech: ["React", "FastAPI", "Python", "AI/ML", "Cybersecurity"],
-    github: "https://github.com/tanyajha29/RecruitSafe",
-    image: "/images/recruitSafe.jpg",
-    featured: true,
-  },
-  {
-    title: "DiagramGenie",
-    desc: "An AI-powered diagram generation platform that transforms natural-language descriptions into structured technical diagrams such as flowcharts, system architectures, ER diagrams, and other visual representations.",
-    tech: ["React", "FastAPI", "AI", "Mermaid", "Full Stack"],
-    github: "https://github.com/tanyajha29/Diagram_Genie/",
-    demo: "https://diagram-genie-ten.vercel.app/",
-    image: "/images/diagramGeniw.png",
+    title: "FormOS - Intelligent Document Processing Platform",
+    desc: "Document intelligence platform that uses OCR and AI extraction to transform unstructured forms into validated structured records with faster review turnaround.",
+    tech: ["OCR", "OpenAI/Ollama", "AWS", "Docker"],
+    github: "http://github.com/mansijadhav07/FormOS/",
+    demo: "https://www.formos.online/",
+    image: "/images/formOS.jpg",
   },
   {
     title: "DristiScan - AI Code Security Scanner",
@@ -128,13 +120,6 @@ const projects = [
     image: "/images/Dristi_scan.jpg",
   },
   {
-    title: "College Companion Platform",
-    desc: "Full-stack student productivity platform that streamlines attendance tracking, academic planning, reminders, and day-to-day campus workflows in one secure experience.",
-    tech: ["React", "Node.js", "MySQL", "Secure Auth"],
-    github: "https://github.com/tanyajha29/college-companion",
-    image: "/images/college_companion.jpg",
-  },
-  {
     title: "Global Conflict Impact Intelligence Platform",
     desc: "RAG-powered intelligence platform that converts conflict-related reports into searchable summaries, trend signals, and faster decision support for analytical workflows.",
     tech: ["React", "FastAPI", "RAG", "PostgreSQL"],
@@ -142,12 +127,27 @@ const projects = [
     image: "/images/GRI.png",
   },
   {
-    title: "FormOS - Intelligent Document Processing Platform",
-    desc: "Document intelligence platform that uses OCR and AI extraction to transform unstructured forms into validated structured records with faster review turnaround.",
-    tech: ["OCR", "OpenAI/Ollama", "AWS", "Docker"],
-    github: "http://github.com/mansijadhav07/FormOS/",
-    demo: "https://www.formos.online/",
-    image: "/images/formOS.jpg",
+    title: "DiagramGenie",
+    desc: "An AI-powered diagram generation platform that transforms natural-language descriptions into structured technical diagrams such as flowcharts, system architectures, ER diagrams, and other visual representations.",
+    tech: ["React", "FastAPI", "AI", "Mermaid", "Full Stack"],
+    github: "https://github.com/tanyajha29/Diagram_Genie/",
+    demo: "https://diagram-genie-ten.vercel.app/",
+    image: "/images/diagramGeniw.png",
+  },
+  {
+    title: "RecruitSafe",
+    desc: "An intelligent recruitment security platform designed to detect and analyze suspicious job postings, recruitment scams, and potentially fraudulent hiring activity, helping candidates make safer decisions during the job search.",
+    tech: ["React", "FastAPI", "Python", "AI/ML", "Cybersecurity"],
+    github: "https://github.com/tanyajha29/RecruitSafe",
+    image: "/images/recruitSafe.jpg",
+    featured: true,
+  },
+  {
+    title: "College Companion Platform",
+    desc: "Full-stack student productivity platform that streamlines attendance tracking, academic planning, reminders, and day-to-day campus workflows in one secure experience.",
+    tech: ["React", "Node.js", "MySQL", "Secure Auth"],
+    github: "https://github.com/tanyajha29/college-companion",
+    image: "/images/college_companion.jpg",
   },
 ];
 
